@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="el"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ώσμωση και ωσμωτική πίεση – Εικονικό εργαστήριο</title>
+<style>
+:root{--bg:#fffaf0;--card:#fff;--tx:#1d2433;--mu:#5b6578;--ac:#b4410f;--ln:#d9cdb8;--w:#7fb2e5;--s:#1b3a8a;--ok:#19794b;--bad:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171a21;--card:#20242e;--tx:#e8eaf0;--mu:#a0a8b8;--ac:#ff9b63;--ln:#3a4152;--w:#3d6fa8;--s:#8fb0ff;--ok:#5fd39a;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#171a21;--card:#20242e;--tx:#e8eaf0;--mu:#a0a8b8;--ac:#ff9b63;--ln:#3a4152;--w:#3d6fa8;--s:#8fb0ff;--ok:#5fd39a;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{padding:14px 16px 6px}h1{margin:0;font-size:1.3rem}header p{margin:2px 0;color:var(--mu);font-size:.9rem}
+nav{display:flex;gap:6px;overflow-x:auto;padding:8px 16px;border-bottom:1px solid var(--ln)}
+nav button{white-space:nowrap;border:1px solid var(--ln);background:var(--card);color:var(--tx);border-radius:20px;padding:7px 14px;font:inherit;cursor:pointer}
+nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+main{max-width:980px;margin:0 auto;padding:14px 16px 40px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+h2{margin:.2em 0 .5em;font-size:1.25rem;color:var(--ac)}h3{margin:.3em 0}
+.big{font-size:1.6rem;text-align:center;margin:.6em 0;font-weight:600}
+.row{display:flex;flex-wrap:wrap;gap:14px}.row>*{flex:1 1 300px}
+label{display:block;font-size:.9rem;margin:6px 0 2px}input[type=range],select,input[type=number],input[type=text]{width:100%;font:inherit;padding:5px;box-sizing:border-box;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:6px}
+button.b{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:8px 14px;font:inherit;cursor:pointer;margin:6px 6px 0 0}button.b.g{background:var(--mu)}
+svg{width:100%;height:auto;display:block}
+.out{font-size:.92rem;background:var(--bg);border:1px dashed var(--ln);border-radius:8px;padding:8px;margin-top:8px}
+.out b{color:var(--ac)}.hint{color:var(--mu);font-size:.88rem}
+.q{border-top:1px solid var(--ln);padding:10px 0}.q .fb{font-size:.9rem;margin-top:4px}.ok{color:var(--ok)}.no{color:var(--bad)}
+.q .opts button{margin:3px 6px 3px 0;padding:6px 10px;border-radius:8px;border:1px solid var(--ln);background:var(--bg);color:var(--tx);font:inherit;cursor:pointer}
+.q input[type=number]{width:140px;margin-right:6px}textarea{width:100%;min-height:60px;font:inherit;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:6px;box-sizing:border-box}
+ul{margin:.3em 0;padding-left:1.2em}table{border-collapse:collapse}td,th{border:1px solid var(--ln);padding:3px 8px}
+@media print{nav,.noprint{display:none}body{background:#fff;color:#000}}
+</style></head><body>
+<header><h1>Ώσμωση και ωσμωτική πίεση <span class="hint">· Χημεία Γ΄ Λυκείου, §8.2</span></h1><p>Δίωρο μάθημα: θεωρία, εικονικό εργαστήριο και φύλλο εργασίας</p></header>
+<nav>
+<button data-t="th" class="on">1 · Θεωρία</button><button data-t="l1">2 · Σωλήνας U</button><button data-t="l2">3 · Κύτταρο</button><button data-t="l3">4 · Κουτί με μεμβράνη</button><button data-t="ws">5 · Φύλλο εργασίας</button>
+</nav>
+<main>
+<section id="th"><div class="card" id="sl"></div>
+<div class="noprint"><button class="b g" id="pv">← Προηγούμενη</button><button class="b" id="nx">Επόμενη →</button> <span id="sn" class="hint"></span></div></section>
+
+<section id="l1" hidden><div class="card"><h2>Εργαστήριο 1 · Ώσμωση σε σωλήνα U (ανοιχτό δοχείο)</h2>
+<p class="hint">Αριστερά καθαρό νερό, δεξιά διάλυμα, στη μέση ημιπερατή μεμβράνη. Άλλαξε τη συγκέντρωση και δες πώς σταθεροποιείται το ύψος h. Δώσε εξωτερική πίεση στο δεξί σκέλος και βρες πότε σταματά η ώσμωση.</p>
+<div class="row"><div><svg viewBox="0 0 400 250" id="u">
+<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="#d9531e"/></marker><clipPath id="cr"><rect id="ucl" x="200" y="100" width="130" height="125"/></clipPath></defs>
+<rect id="lA" x="70" y="100" width="50" height="70" fill="var(--w)" opacity=".5"/><rect x="70" y="170" width="130" height="55" fill="var(--w)" opacity=".5"/>
+<rect id="rA" x="280" y="100" width="50" height="70" fill="var(--w)" opacity=".8"/><rect x="200" y="170" width="130" height="55" fill="var(--w)" opacity=".8"/>
+<g clip-path="url(#cr)" id="dots" fill="var(--s)"></g>
+<rect x="70" y="20" width="50" height="150" fill="none" stroke="var(--tx)" stroke-width="2"/><rect x="280" y="20" width="50" height="150" fill="none" stroke="var(--tx)" stroke-width="2"/><rect x="70" y="170" width="260" height="55" fill="none" stroke="var(--tx)" stroke-width="2"/>
+<line x1="200" y1="170" x2="200" y2="225" stroke="#d9531e" stroke-width="3" stroke-dasharray="4 3"/>
+<line id="a1" x1="170" y1="190" x2="220" y2="190" stroke="#d9531e" stroke-width="3" marker-end="url(#ar)"/><line id="a2" x1="230" y1="210" x2="180" y2="210" stroke="#d9531e" stroke-width="3" marker-end="url(#ar)"/>
+<text x="150" y="194" font-size="12" fill="var(--tx)">υ₁</text><text x="238" y="214" font-size="12" fill="var(--tx)">υ₂</text>
+<text x="70" y="240" font-size="12" fill="var(--tx)">διαλύτης</text><text x="285" y="240" font-size="12" fill="var(--tx)">διάλυμα</text>
+<line id="hl" x1="345" y1="100" x2="345" y2="100" stroke="var(--ac)" stroke-width="2"/><text id="ht" x="352" y="104" font-size="13" fill="var(--ac)">h</text>
+<rect id="pis" x="278" y="20" width="54" height="6" fill="var(--ac)" opacity="0"/></svg></div>
+<div><label>Διαλυμένη ουσία</label><select id="us"><option value="1">Γλυκόζη (μοριακό, i = 1)</option><option value="1">Ζάχαρη (μοριακό, i = 1)</option><option value="2">NaCl (i = 2)</option><option value="3">CaCl₂ (i = 3)</option></select>
+<label>Συγκέντρωση C: <b id="ucv"></b> M</label><input type="range" id="uc" min="0" max="1" step="0.05" value="0.3">
+<label>Θερμοκρασία: <b id="utv"></b> °C</label><input type="range" id="ut" min="0" max="60" step="1" value="27">
+<label>Εξωτερική πίεση στο διάλυμα: <b id="upv"></b> atm</label><input type="range" id="up" min="0" max="40" step="0.1" value="0">
+<button class="b" id="ugo">▶ Έναρξη</button><button class="b g" id="urs">↺ Επαναφορά</button>
+<div class="out" id="uo"></div></div></div></div></section>
+
+<section id="l2" hidden><div class="card"><h2>Εργαστήριο 2 · Ερυθρό αιμοσφαίριο σε διάλυμα NaCl</h2>
+<p class="hint">Το κύτταρο έχει ωσμωτική πίεση περίπου 8 atm (ισοτονικό με φυσιολογικό ορό 0,9% w/v NaCl). Μετακίνησε τον δείκτη και παρατήρησε.</p>
+<div class="row"><div><svg viewBox="0 0 300 220"><rect x="10" y="10" width="280" height="200" rx="14" fill="none" stroke="var(--tx)" stroke-width="2"/><g id="cd" fill="var(--s)"></g><g id="cell"></g></svg></div>
+<div><label>Περιεκτικότητα NaCl έξω από το κύτταρο: <b id="cv"></b> % w/v</label><input type="range" id="cs" min="0" max="3" step="0.05" value="0.9">
+<div class="out" id="co"></div><p class="hint">Δοκίμασε: 0 % (καθαρό νερό), 0,9 %, 2 %.</p></div></div></div></section>
+
+<section id="l3" hidden><div class="card"><h2>Εργαστήριο 3 · Δύο διαλύματα σε κλειστό δοχείο με κινητή μεμβράνη</h2>
+<p class="hint">Οριζόντιο δοχείο μήκους 24 cm. Η μεμβράνη είναι ημιπερατή και κινητή. Ίδια διαλυμένη ουσία Α, ίδιος διαλύτης. Πάτα «Ώσμωση».</p>
+<svg viewBox="0 0 480 160"><defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="#d9531e"/></marker></defs>
+<rect id="bl" x="40" y="30" width="200" height="80" fill="var(--s)" opacity=".2"/><rect id="br" x="240" y="30" width="200" height="80" fill="var(--s)" opacity=".4"/>
+<rect x="40" y="30" width="400" height="80" fill="none" stroke="var(--tx)" stroke-width="2"/><line id="mb" x1="240" y1="30" x2="240" y2="110" stroke="#d9531e" stroke-width="4"/>
+<line id="ba1" x1="205" y1="60" x2="255" y2="60" stroke="#d9531e" stroke-width="3" marker-end="url(#ar2)"/><line id="ba2" x1="275" y1="85" x2="235" y2="85" stroke="#d9531e" stroke-width="3" marker-end="url(#ar2)"/>
+<text id="t1" x="45" y="128" font-size="12" fill="var(--tx)"></text><text id="t2" x="445" y="128" font-size="12" text-anchor="end" fill="var(--tx)"></text><text id="tx" x="240" y="18" font-size="12" text-anchor="middle" fill="var(--ac)"></text><text x="40" y="150" font-size="11" fill="var(--mu)">0 cm</text><text x="440" y="150" font-size="11" text-anchor="end" fill="var(--mu)">24 cm</text></svg>
+<div class="row"><div><label>Αριστερά: n₁ = <b id="n1v"></b> mol Α</label><input type="range" id="n1" min="0.05" max="0.5" step="0.05" value="0.1"></div>
+<div><label>Δεξιά: n₂ = <b id="n2v"></b> mol Α</label><input type="range" id="n2" min="0.05" max="0.5" step="0.05" value="0.2"></div>
+<div><label>Διατομή α = <b id="av"></b> cm²</label><input type="range" id="al" min="10" max="60" step="5" value="20"></div></div>
+<button class="b" id="bgo">▶ Ώσμωση</button><button class="b g" id="brs">↺ Επαναφορά</button>
+<div class="out" id="bo"></div>
+<h3>🔬 Μοριακή εικόνα (προσομοίωση σωματιδίων)</h3>
+<p class="hint">Τα ανοιχτόχρωμα μόρια νερού περνούν από τους πόρους, τα σκούρα μόρια Α δεν περνούν. Η μεμβράνη κινείται ώστε η πυκνότητα σωματιδίων να είναι ίδια και στις δύο πλευρές. Χρησιμοποιεί τα n₁, n₂ από τους δείκτες. Παρατήρησε: από ποια πλευρά χτυπούν περισσότερα μόρια <i>νερού</i> στη μεμβράνη;</p>
+<canvas id="pc" width="480" height="160" style="width:100%;border:1px solid var(--ln);border-radius:8px"></canvas>
+<button class="b" id="pgo">▶ Εκκίνηση / Παύση</button><button class="b g" id="prs">↺ Επαναφορά</button>
+<div class="out" id="po"></div></div></section>
+
+<section id="ws" hidden><div class="card"><h2>Φύλλο εργασίας</h2>
+<div class="row"><div><label>Ονοματεπώνυμο / Τμήμα</label><input type="text" id="nm"></div><div class="big" style="margin:0">Βαθμολογία: <span id="sc">0</span> / <span id="tot"></span></div></div>
+<p class="hint">R = 0,082 L·atm/(mol·K), T(K) = 273 + θ(°C). Τα εργαστήρια 1–3 βοηθούν στις ερωτήσεις 8–10.</p><div id="qs"></div>
+<h3>Παρατηρήσεις από το εργαστήριο</h3>
+<label>Σωλήνας U: τι συμβαίνει στις ταχύτητες υ₁, υ₂ όσο ανεβαίνει η στάθμη;</label><textarea></textarea>
+<label>Κύτταρο: τι συμβαίνει σε υποτονικό και σε υπερτονικό περιβάλλον; Γιατί;</label><textarea></textarea>
+<button class="b noprint" onclick="print()">🖨 Εκτύπωση</button></div></section>
+</main>
+<script>
+const $=s=>document.querySelector(s),R=0.082,N='http://www.w3.org/2000/svg';
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x==b));document.querySelectorAll('main>section').forEach(s=>s.hidden=s.id!=b.dataset.t);scrollTo(0,0)});
+/* ---------- Θεωρία ---------- */
+const S=[
+['Πλάνο δίωρου μαθήματος','<table><tr><th>Ώρα</th><th>Δραστηριότητα</th></tr><tr><td>1η · 10΄</td><td>Εισαγωγή: διαλύματα, c = n/V, τι είναι προσθετική ιδιότητα</td></tr><tr><td>1η · 20΄</td><td>Ώσμωση, ημιπερατή μεμβράνη, ωσμωτική πίεση, νόμος van’t Hoff</td></tr><tr><td>1η · 15΄</td><td>Εργαστήριο 1: σωλήνας U</td></tr><tr><td>2η · 10΄</td><td>Ισοτονικά–υπερτονικά–υποτονικά, Εργαστήριο 2: κύτταρο</td></tr><tr><td>2η · 10΄</td><td>Εργαστήριο 3: κουτί με κινητή μεμβράνη</td></tr><tr><td>2η · 20΄</td><td>Φύλλο εργασίας (ωσμωμετρία, αραίωση, ανάμειξη)</td></tr><tr><td>2η · 5΄</td><td>Σύνοψη</td></tr></table><p><b>Προσδοκώμενα αποτελέσματα:</b> περιγράφω την ώσμωση, χαρακτηρίζω διαλύματα ως ισοτονικά/υπερτονικά/υποτονικά και προβλέπω την κατεύθυνση μεταφοράς διαλύτη, εφαρμόζω Π = CRT, αναφέρω εφαρμογές (φυσιολογικός ορός, αφαλάτωση, αιμοκάθαρση).</p>'],
+['Προαπαιτούμενα: διαλύματα και συγκέντρωση','<ul><li><b>Διάλυμα</b>: ομογενές μίγμα διαλύτη και διαλυμένης ουσίας (υδατικό αν ο διαλύτης είναι νερό).</li><li><b>Μοριακά</b> διαλύματα (μη ηλεκτρολύτες: γλυκόζη, ζάχαρη, ουρία) και <b>ιοντικά/ηλεκτρολυτικά</b> (οξέα, βάσεις, άλατα).</li><li>Συγκέντρωση (μοριακότητα κατ’ όγκο): <b>c = n / V</b> (mol/L ή M). Διάλυμα HCl 2 M: 2 mol HCl σε 1 L.</li><li>Περιεκτικότητες: % w/w, % w/v, % v/v.</li></ul><div class="big">c = n / V</div>'],
+['Προσθετικές (αθροιστικές) ιδιότητες','<p>Ιδιότητες που <b>δεν εξαρτώνται από τη φύση</b> της διαλυμένης ουσίας αλλά μόνο από τον <b>αριθμό των διαλυμένων σωματιδίων</b> (mol) σε ορισμένη ποσότητα διαλύματος.</p><p>Εδώ μελετάμε την <b>ωσμωτική πίεση</b>, τη μόνη προσθετική ιδιότητα που εξαρτάται και από τη <b>θερμοκρασία</b>.</p><p class="hint">Ερώτηση: ίδια ποσότητα γλυκόζης και ζάχαρης στον ίδιο όγκο νερού δίνουν ίδια πυκνότητα; Ίδια ωσμωτική πίεση;</p>'],
+['Ημιπερατή μεμβράνη και ώσμωση','<p><b>Ημιπερατή μεμβράνη</b>: αφήνει να περνούν τα μόρια του διαλύτη και προς τις δύο κατευθύνσεις, όχι όμως της διαλυμένης ουσίας (λόγω μεγέθους). Παραδείγματα: κυτταρική μεμβράνη, σελοφάν.</p><p><b>Ώσμωση</b>: διάχυση περισσότερων μορίων διαλύτη μέσω ημιπερατής μεμβράνης (i) από τον διαλύτη στο διάλυμα ή (ii) από το αραιότερο (υποτονικό) προς το πυκνότερο (υπερτονικό) διάλυμα.</p><p>Αρχικά υ₁ &gt; υ₂ προς το διάλυμα. Στο ανοιχτό δοχείο η στάθμη ανεβαίνει και η υδροστατική πίεση (ρgh) εξισώνει τις ταχύτητες: δυναμική ισορροπία υ′₁ = υ′₂ ≠ 0. Οι συγκεντρώσεις <b>δεν</b> εξισώνονται.</p><p>→ Δοκίμασέ το στο <b>Εργαστήριο 1</b>.</p>'],
+['Ωσμωτική πίεση και νόμος van’t Hoff','<p><b>Ωσμωτική πίεση Π</b>: η ελάχιστη εξωτερική πίεση που πρέπει να ασκηθεί στο διάλυμα (το οποίο χωρίζεται με ημιπερατή μεμβράνη από τον καθαρό διαλύτη) ώστε να εμποδιστεί η ώσμωση, χωρίς να μεταβληθεί ο όγκος του.</p><div class="big">Π = C·R·T &nbsp;&nbsp; ΠV = nRT</div><p>Για αραιά μοριακά διαλύματα. Με δύο ή περισσότερες διαλυμένες ουσίες: ΠV = (n₁ + n₂ + …)RT.</p><p>Ηλεκτρολύτες (ισχυροί): <b>Π = i·C·R·T</b>, όπου i το άθροισμα των στοιχειομετρικών συντελεστών των ιόντων. NaCl: i = 2, CaCl₂: i = 3. Ασθενής ηλεκτρολύτης: Π = (C + x)RT σε ΜΟΡΙΑ+ΙΟΝΤΑ, όπου μετρά ο συνολικός αριθμός σωματιδίων.</p><p class="hint">Στην πράξη οι τιμές για ιοντικά διαλύματα συμφωνούν με τον τύπο μόνο όταν είναι πολύ αραιά.</p>'],
+['Ισοτονικά, υπερτονικά, υποτονικά','<ul><li><b>Ισοτονικά</b>: ίδια Π (Π₁ = Π₂), π.χ. φυσιολογικός ορός 0,9 % w/v NaCl και αίμα. Στην ίδια θερμοκρασία έχουν ίσες συγκεντρώσεις (σε σωματίδια).</li><li><b>Υπερτονικό</b> (πυκνό): μεγαλύτερη Π. <b>Υποτονικό</b> (αραιό): μικρότερη Π.</li><li>Ο διαλύτης κινείται από το <b>υποτονικό προς το υπερτονικό</b>.</li></ul><p>Προσοχή: NaCl 0,4 M <b>δεν</b> είναι ισοτονικό με γλυκόζη 0,4 M, γιατί Π = 0,8RT έναντι 0,4RT.</p>'],
+['Ωσμωμετρία','<p>Μέθοδος προσδιορισμού της σχετικής μοριακής μάζας από πειραματικό προσδιορισμό της Π:</p><div class="big">Mr = m·R·T / (Π·V)</div><p>Ισχύει για αραιά μοριακά διαλύματα. Χρησιμοποιείται για μεγαλομοριακές ενώσεις, όπως πρωτεΐνες και πολυμερή.</p>'],
+['Αραίωση, συμπύκνωση, ανάμειξη','<ul><li><b>Αραίωση</b>: n σταθερά, c₁V₁ = c₂V₂, V₂ = V₁ + V(H₂O).</li><li><b>Συμπύκνωση</b>: με αφαίρεση διαλύτη (V₂ = V₁ − V) ή προσθήκη διαλυμένης ουσίας (n₂ = n₁ + n).</li><li><b>Ανάμειξη</b> διαλυμάτων: n₁ + n₂ = n₃, δηλαδή c₁V₁ + c₂V₂ = c₃V₃.</li></ul><p>Επειδή η Π είναι προσθετική ιδιότητα και Π = CRT στην ίδια θερμοκρασία, οι ίδιες σχέσεις ισχύουν με το Π στη θέση του c: Π₁V₁ + Π₂V₂ = Π₃(V₁+V₂).</p>'],
+['Βιολογική σημασία και εφαρμογές','<ul><li>Νεκρά Θάλασσα: μεγάλη συγκέντρωση αλάτων, δεν αναπτύσσονται οργανισμοί.</li><li>Τουρσί, αλατισμένο κρέας, ζαχαρωμένα φρούτα: τα βακτήρια χάνουν νερό και πεθαίνουν.</li><li>Οίδημα από πολύ αλατισμένες τροφές. Μετακίνηση νερού από το χώμα στα φύλλα.</li><li>Ενέσιμα διαλύματα (φυσιολογικός ορός): ισοτονικά με το αίμα (≈ 8 atm).</li><li>Υποτονικό περιβάλλον: το κύτταρο διογκώνεται, αιμόλυση. Υπερτονικό: συρρικνώνεται.</li><li>Αφαλάτωση (αντίστροφη ώσμωση), αιμοκάθαρση.</li></ul><p>→ <b>Εργαστήριο 2</b> και <b>3</b>.</p>']];
+let si=0;function ds(){$('#sl').innerHTML='<h2>'+S[si][0]+'</h2>'+S[si][1];$('#sn').textContent=(si+1)+' / '+S.length}
+$('#pv').onclick=()=>{si=Math.max(0,si-1);ds()};$('#nx').onclick=()=>{si=Math.min(S.length-1,si+1);ds()};ds();
+/* ---------- Εργαστήριο 1 ---------- */
+let ph=0,run=false,last=0,ud=[];
+const gi=id=>$('#'+id),sv=(e,a)=>{for(const k in a)e.setAttribute(k,a[k])};
+const rnd=(()=>{let s=7;return()=>(s=(s*16807)%2147483647)/2147483647})();
+function mkDots(){const g=gi('dots');g.innerHTML='';const n=Math.round(+gi('uc').value*40*(+gi('us').value==1?1:+gi('us').value*.8));for(let k=0;k<n;k++){const a=rnd()<.45,x=a?287+rnd()*36:206+rnd()*118,y=a?30+rnd()*135:176+rnd()*43;const c=document.createElementNS(N,'circle');sv(c,{cx:x,cy:y,r:3});g.appendChild(c)}}
+const Pi=()=>+gi('us').value*+gi('uc').value*R*(273+ +gi('ut').value);
+function uDraw(){const P=Pi(),pe=+gi('up').value,net=P-pe-ph,d=Math.max(-62,Math.min(62,ph*2.5)),yl=100+d,yr=100-d;
+gi('ucv').textContent=(+gi('uc').value).toFixed(2);gi('utv').textContent=gi('ut').value;gi('upv').textContent=(+gi('up').value).toFixed(1);
+sv(gi('lA'),{y:yl,height:170-yl});sv(gi('rA'),{y:yr,height:170-yr});sv(gi('ucl'),{y:yr,height:225-yr});
+const u1=1,u2=P>0?Math.max(0,Math.min(2,1-net/P)):1;sv(gi('a1'),{x1:175,x2:175+50*u1});sv(gi('a2'),{x1:225,x2:225-50*u2});
+sv(gi('hl'),{y1:yr,y2:yl,x1:345,x2:345});gi('ht').setAttribute('y',(yr+yl)/2);gi('ht').textContent='h';
+sv(gi('pis'),{y:yr-28,opacity:pe>0?1:0});
+let st=Math.abs(net)<0.03*(P+0.3)?'Δυναμική ισορροπία: υ₁ = υ₂ ≠ 0 (ρgh + Pεξ = Π)':net>0?'Ώσμωση προς το διάλυμα (υ₁ > υ₂)':'Αντίστροφη ώσμωση: ο διαλύτης φεύγει από το διάλυμα (υ₂ > υ₁)';
+gi('uo').innerHTML='Π = i·C·R·T = <b>'+P.toFixed(2)+' atm</b><br>Υδροστατική πίεση ρgh = <b>'+ph.toFixed(2)+' atm</b> → h ≈ <b>'+(ph*10.33).toFixed(2)+' m</b> νερού (το σχήμα είναι σε κλίμακα)<br>υ₁ = '+u1.toFixed(2)+' , υ₂ = '+u2.toFixed(2)+' (σχετικές)<br><b>'+st+'</b>'}
+function tick(t){if(!run)return;const dt=Math.min(.05,(t-last)/1000);last=t;ph+=0.8*(Pi()-(+gi('up').value)-ph)*dt;uDraw();requestAnimationFrame(tick)}
+gi('ugo').onclick=()=>{if(!run){run=true;last=performance.now();requestAnimationFrame(tick)}};
+gi('urs').onclick=()=>{run=false;ph=0;uDraw()};
+['uc','us'].forEach(i=>gi(i).addEventListener('input',()=>{mkDots();uDraw()}));['ut','up'].forEach(i=>gi(i).addEventListener('input',uDraw));mkDots();uDraw();
+/* ---------- Εργαστήριο 2 ---------- */
+function cDraw(){const c=+gi('cs').value;gi('cv').textContent=c.toFixed(2);const g=gi('cd');g.innerHTML='';let s=11;const n=Math.round(c*35);for(let k=0;k<n;k++){s=(s*16807)%2147483647;const x=25+(s%25000)/25000*250;s=(s*16807)%2147483647;const y=25+(s%25000)/25000*170;if(Math.hypot(x-150,y-115)<70)continue;const e=document.createElementNS(N,'circle');sv(e,{cx:x,cy:y,r:3});g.appendChild(e)}
+const v=c<=0?3:0.9/c,ly=v>1.45,vv=Math.max(0.55,v),r=36*Math.sqrt(Math.min(vv,1.45)),cl=gi('cell');let h='';
+if(ly){for(let k=0;k<9;k++){const a=k*0.7;h+='<circle cx="'+(150+Math.cos(a)*(45+k*3))+'" cy="'+(115+Math.sin(a)*(40+k*3))+'" r="'+(6+k%3*2)+'" fill="#e0334a" opacity=".55"/>'}}
+else if(v<0.85){let p=[];for(let k=0;k<24;k++){const a=k/24*6.283,rr=r*(k%2?1.18:0.96);p.push((150+Math.cos(a)*rr).toFixed(1)+','+(115+Math.sin(a)*rr).toFixed(1))}h='<polygon points="'+p.join(' ')+'" fill="#d62839"/>'}
+else h='<circle cx="150" cy="115" r="'+r+'" fill="#d62839"/><circle cx="150" cy="115" r="'+(r*.45)+'" fill="#f07080"/>';
+cl.innerHTML=h;
+const Po=2*(c*10/58.5)*R*310,iso=Math.abs(c-0.9)<0.05;
+const cls=iso?'ισοτονικό':c<0.9?'υποτονικό':'υπερτονικό';
+gi('co').innerHTML='Π έξω = i·C·R·T = 2·'+(c*10/58.5).toFixed(3)+'·0,082·310 = <b>'+Po.toFixed(1)+' atm</b> (κύτταρο ≈ 7,8 atm)<br>Το περιβάλλον είναι <b>'+cls+'</b> ως προς το κύτταρο.<br>'+(iso?'Εισέρχονται και εξέρχονται ίσα μόρια νερού: το κύτταρο διατηρεί το μέγεθός του.':c<0.9?(ly?'<b>Αιμόλυση!</b> Το κύτταρο διογκώνεται υπερβολικά και σπάζει, η αιμοσφαιρίνη διαχέεται.':'Μπαίνουν περισσότερα μόρια νερού απ’ όσα βγαίνουν: το κύτταρο διογκώνεται.'):'Βγαίνουν περισσότερα μόρια νερού απ’ όσα μπαίνουν: το κύτταρο συρρικνώνεται.')}
+gi('cs').addEventListener('input',cDraw);cDraw();
+/* ---------- Εργαστήριο 3 ---------- */
+let pos=12,tgt=12,anim=false;
+function bDraw(){const n1=+gi('n1').value,n2=+gi('n2').value,a=+gi('al').value;gi('n1v').textContent=n1.toFixed(2);gi('n2v').textContent=n2.toFixed(2);gi('av').textContent=a;
+const L1=pos,L2=24-pos,k=400/24,mx=40+L1*k;sv(gi('mb'),{x1:mx,x2:mx});sv(gi('bl'),{width:L1*k});sv(gi('br'),{x:mx,width:L2*k});
+const c1=n1/(a*L1/1000),c2=n2/(a*L2/1000);const cm=Math.max(c1,c2,.01);gi('bl').setAttribute('opacity',(.12+.5*c1/cm).toFixed(2));gi('br').setAttribute('opacity',(.12+.5*c2/cm).toFixed(2));
+const eq=Math.abs(c1-c2)<0.002*cm+1e-9,f=eq?1:Math.max(.2,Math.min(1.8,c2/c1));
+const u1=1,u2=eq?1:c1<c2?c1/c2:c2/c1;
+sv(gi('ba1'),{x1:mx-35,x2:mx-35+40*(c1<c2||eq?1:u2),y1:60,y2:60});sv(gi('ba2'),{x1:mx+35,x2:mx+35-40*(c1<c2||eq?u2:1),y1:85,y2:85});
+gi('t1').textContent='c₁ = '+c1.toFixed(2)+' M';gi('t2').textContent='c₂ = '+c2.toFixed(2)+' M';gi('tx').textContent='αριστερό τμήμα: '+L1.toFixed(1)+' cm · δεξί: '+L2.toFixed(1)+' cm';
+const x=12*(n2-n1)/(n1+n2);
+gi('bo').innerHTML='Π₁ = c₁RT = <b>'+(c1*R*300).toFixed(2)+' atm</b>, Π₂ = c₂RT = <b>'+(c2*R*300).toFixed(2)+' atm</b> (27 °C)<br>'+(eq?'<b>Δυναμική ισορροπία:</b> c₁ = c₂ και υ₁ = υ₂ ≠ 0.':'Ο διαλύτης περνά από το '+(c1<c2?'αριστερό (υποτονικό) προς το δεξί (υπερτονικό)':'δεξί (υποτονικό) προς το αριστερό (υπερτονικό)')+'.')+'<br>Θεωρητικά η μεμβράνη θα σταματήσει όταν n₁/(12−x) = n₂/(12+x). Πάτα «Ώσμωση» και μέτρησε τη μετατόπιση.'}
+function bAnim(){if(Math.abs(tgt-pos)<0.01){pos=tgt;anim=false;bDraw();return}pos+=(tgt-pos)*0.06;bDraw();requestAnimationFrame(bAnim)}
+gi('bgo').onclick=()=>{const n1=+gi('n1').value,n2=+gi('n2').value;tgt=12-12*(n2-n1)/(n1+n2);if(!anim){anim=true;requestAnimationFrame(bAnim)}};
+gi('brs').onclick=()=>{tgt=pos=12;anim=false;bDraw()};
+['n1','n2','al'].forEach(i=>gi(i).addEventListener('input',()=>{pos=tgt=12;bDraw()}));bDraw();
+/* ---------- Μοριακή προσομοίωση ---------- */
+let PP=[],mp=12,pr=false,fr=0,cnt=[0,0],lastc=[0,0];const cx=gi('pc').getContext('2d');
+function pInit(){const a=Math.round(+gi('n1').value*100),b=Math.round(+gi('n2').value*100),W=80;PP=[];mp=12;fr=0;cnt=[0,0];lastc=[0,0];
+const add=(side,s,n)=>{for(let k=0;k<n;k++){const t=Math.random()*6.28;PP.push({x:side*12+Math.random()*12,y:12+Math.random()*136,vx:Math.cos(t)*.12,vy:Math.sin(t)*.12*4,s,side})}};
+add(0,0,W-a);add(0,1,a);add(1,0,W-b);add(1,1,b);pDraw()}
+function pStep(){const N=PP.length;for(const p of PP){if(Math.random()<.08){const t=Math.random()*6.28;p.vx=Math.cos(t)*.12;p.vy=Math.sin(t)*.5}
+p.x+=p.vx;p.y+=p.vy;if(p.y<10||p.y>150){p.vy=-p.vy;p.y=Math.max(10,Math.min(150,p.y))}if(p.x<0||p.x>24){p.vx=-p.vx;p.x=Math.max(0,Math.min(24,p.x))}
+const hit=p.side==0?p.x>mp:p.x<mp;if(hit){if(p.s==0&&Math.random()<.4){cnt[p.side]++;p.side=1-p.side}else{p.vx=-p.vx;p.x=mp+(p.side==0?-.05:.05)}}}
+const nl=PP.filter(p=>p.side==0).length;mp+=(24*nl/N-mp)*.03;for(const p of PP){if(p.side==0&&p.x>mp)p.x=mp-.05;if(p.side==1&&p.x<mp)p.x=mp+.05}}
+function pDraw(){const cs=getComputedStyle(document.documentElement),tx=cs.getPropertyValue('--tx'),so=cs.getPropertyValue('--s'),k=20;cx.clearRect(0,0,480,160);cx.strokeStyle=tx;cx.lineWidth=2;cx.strokeRect(1,10,478,140);
+cx.strokeStyle='#d9531e';cx.lineWidth=4;cx.setLineDash([8,5]);cx.beginPath();cx.moveTo(mp*k,10);cx.lineTo(mp*k,150);cx.stroke();cx.setLineDash([]);
+for(const p of PP){cx.beginPath();cx.fillStyle=p.s?so:'#5aa9e6';cx.arc(p.x*k,p.y,p.s?6:3.5,0,6.28);cx.fill()}
+const L=PP.filter(p=>p.side==0),Rr=PP.filter(p=>p.side==1),f=a=>a.length?Math.round(100*a.filter(p=>!p.s).length/a.length):0;
+gi('po').innerHTML='Αριστερά: '+f(L)+' % μόρια νερού · Δεξιά: '+f(Rr)+' % μόρια νερού · μεμβράνη στα <b>'+mp.toFixed(1)+' cm</b> (θεωρία τελικά: '+(12-12*(+gi('n2').value-+gi('n1').value)/(+gi('n1').value+ +gi('n2').value)).toFixed(1)+' cm)<br>Διελεύσεις νερού στο τελευταίο δευτερόλειπτο: υ₁ (→) = <b>'+lastc[0]+'</b>, υ₂ (←) = <b>'+lastc[1]+'</b>. Η πλευρά με λιγότερα μόρια νερού στη μεμβράνη (το διάλυμα με περισσότερη διαλυμένη ουσία) στέλνει λιγότερα: γι’ αυτό υπάρχει καθαρή ροή προς το πυκνότερο, μέχρι να ισορροπήσουν οι συγκεντρώσεις.'}
+function pLoop(){if(!pr)return;for(let i=0;i<2;i++)pStep();if(++fr%60==0){lastc=cnt.slice();cnt=[0,0]}pDraw();requestAnimationFrame(pLoop)}
+gi('pgo').onclick=()=>{pr=!pr;if(pr)requestAnimationFrame(pLoop)};gi('prs').onclick=()=>{pr=false;pInit()};
+['n1','n2'].forEach(i=>gi(i).addEventListener('input',()=>{pr=false;pInit()}));pInit();
+/* ---------- Φύλλο εργασίας ---------- */
+const Q=[
+{t:'Υπολόγισε την ωσμωτική πίεση μοριακού διαλύματος γλυκόζης 0,1 M στους 27 °C (σε atm).',a:2.46,tol:.03,e:'Π = CRT = 0,1·0,082·300 = 2,46 atm.'},
+{t:'Υδατικό διάλυμα NaCl 0,4 M είναι ισοτονικό με υδατικό διάλυμα γλυκόζης 0,4 M στην ίδια θερμοκρασία.',o:['Σωστό','Λάθος'],a:'Λάθος',e:'Το NaCl δίνει ιόντα: Π = (0,4+0,4)RT = 0,8RT, ενώ για τη γλυκόζη Π = 0,4RT.'},
+{t:'Υπολόγισε την Π διαλύματος CaCl₂ 0,1 M στους 27 °C (atm), θεωρώντας πλήρη διάσταση.',a:7.38,tol:.05,e:'i = 3 → Π = 3·0,1·0,082·300 = 7,38 atm.'},
+{t:'Μοριακά διαλύματα γλυκόζης (Mr 180), ζάχαρης (Mr 342) και φορμαλδεΰδης (Mr 30) έχουν ίδια % w/v και ίδια θερμοκρασία. Σειρά αυξανόμενης ωσμωτικής πίεσης:',o:['ζάχαρη < γλυκόζη < φορμαλδεΰδη','φορμαλδεΰδη < γλυκόζη < ζάχαρη','γλυκόζη < ζάχαρη < φορμαλδεΰδη'],a:'ζάχαρη < γλυκόζη < φορμαλδεΰδη',e:'Ίδια m, V, T → Π = mRT/(Mr·V), άρα η Π είναι αντιστρόφως ανάλογη του Mr.'},
+{t:'Διαλύουμε 5 g ουσίας σε διάλυμα 82 mL στους 87 °C και βρίσκουμε Π = 10 atm. Ποια η Mr; (γλυκόζη 180 ή σακχαρόζη 342)',a:180,tol:1,e:'Mr = mRT/(ΠV) = 5·0,082·360/(10·0,082) = 180: γλυκόζη.'},
+{t:'Σε 1 L διαλύματος ζάχαρης με Π = 4 atm προσθέτουμε 7 L νερό (ίδια θερμοκρασία). Η νέα Π (atm);',a:0.5,tol:.01,e:'Π₁V₁ = Π₂V₂ → 4·1 = Π₂·8 → 0,5 atm.'},
+{t:'Αναμιγνύουμε 2 L διαλύματος γλυκόζης (Π = 3 atm) με 4 L διαλύματος ζάχαρης (Π = 4 atm). Η Π του τελικού διαλύματος (atm);',a:3.67,tol:.03,e:'3·2 + 4·4 = Π₃·6 → Π₃ = 22/6 = 11/3 ≈ 3,67 atm.'},
+{t:'Εργαστήριο 3: με n₁ = 0,1 mol και n₂ = 0,2 mol, πόσα cm μετακινείται η μεμβράνη (προς τα αριστερά);',a:4,tol:.1,e:'0,1/(12−x) = 0,2/(12+x) → x = 4 cm.'},
+{t:'Εργαστήριο 2: ποια περιεκτικότητα % w/v NaCl είναι ισοτονική με το κύτταρο;',a:0.9,tol:.05,e:'0,9 % w/v (φυσιολογικός ορός, Π ≈ 8 atm).'},
+{t:'Εργαστήριο 1: όταν η εξωτερική πίεση στο διάλυμα γίνει ίση με Π, το ύψος h που δημιουργείται είναι:',o:['μέγιστο','μηδέν','αρνητικό'],a:'μηδέν',e:'Αν Pεξ = Π η ώσμωση εμποδίζεται και δεν ανεβαίνει η στάθμη.'},
+{t:'1 mol προπενίου πολυμερίζεται πλήρως. Το διάλυμα (1 L) έχει Π = 0,0246 atm στους 27 °C. Πόσα μόρια μονομερούς σχηματίζουν ένα μόριο πολυμερούς;',a:1000,tol:1,e:'n = ΠV/RT = 0,0246/24,6 = 0,001 mol πολυμερούς → ν = 1/0,001 = 1000.'}];
+let sc=0;const done=new Set();$('#tot').textContent=Q.length;
+Q.forEach((q,i)=>{const d=document.createElement('div');d.className='q';
+const fin=ok=>{if(done.has(i))return;done.add(i);if(ok)sc++;$('#sc').textContent=sc};
+const fb=(ok)=>{const f=d.querySelector('.fb');f.className='fb '+(ok?'ok':'no');f.textContent=(ok?'✔ Σωστό. ':'✘ Όχι ακριβώς. ')+q.e;fin(ok)};
+d.innerHTML='<b>'+(i+1)+'.</b> '+q.t+'<div class="'+(q.o?'opts':'')+'">'+(q.o?q.o.map(x=>'<button>'+x+'</button>').join(''):'<input type="number" step="any"><button class="b">Έλεγχος</button>')+'</div><div class="fb"></div>';
+if(q.o)d.querySelectorAll('button').forEach(b=>b.onclick=()=>fb(b.textContent==q.a));
+else d.querySelector('button').onclick=()=>{const v=parseFloat(d.querySelector('input').value);fb(Math.abs(v-q.a)<=q.tol)};
+$('#qs').appendChild(d)});
+</script></body></html>
